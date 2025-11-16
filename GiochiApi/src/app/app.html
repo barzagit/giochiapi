@@ -1,4 +1,8 @@
-<router-outlet></router-outlet><!-- Overlay when panel is open -->
+<router-outlet></router-outlet>
+
+<footer class="app-footer">
+  <p>&copy; 2025 GiochiAPI. Powered by <a href="https://www.freetogame.com/" target="_blank" rel="noopener">FreeToGame</a></p>
+</footer><!-- Overlay when panel is open -->
 <div class="panel-overlay" *ngIf="(panelOpen$ | async)" (click)="closeFavoritesPanel()"></div>
 
 <!-- Right-side sliding panel -->

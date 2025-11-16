@@ -4,6 +4,35 @@
     "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+router-outlet {
+  flex: 1;
+}
+
+.app-footer {
+  padding: 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.app-footer p {
+  margin: 0;
+}
+
+.app-footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
 }
 
 /* Overlay */
