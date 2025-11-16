@@ -1,0 +1,63 @@
+.favorites-container {
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.fav-card {
+  display: flex;
+  gap: 12px;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.fav-thumb {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.fav-info h3 {
+  margin: 0 0 6px 0;
+}
+
+.fav-genre {
+  margin: 0 0 8px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.fav-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.remove-btn {
+  background: #ff4b2b;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  opacity: 0.95;
+}
+
+.no-favs {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}

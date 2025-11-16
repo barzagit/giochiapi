@@ -1,0 +1,19 @@
+<div class="favorites-container">
+  <h1>I tuoi preferiti</h1>
+
+  <div *ngIf="favorites.length === 0" class="no-favs">Non hai ancora giochi nei preferiti.</div>
+
+  <div class="favorites-grid" *ngIf="favorites.length > 0">
+    <div class="fav-card" *ngFor="let game of favorites">
+      <img [src]="game.thumbnail" [alt]="game.title" class="fav-thumb" />
+      <div class="fav-info">
+        <h3>{{ game.title }}</h3>
+        <p class="fav-genre">{{ game.genre }}</p>
+        <div class="fav-actions">
+          <a [href]="game.game_url" target="_blank" class="game-link">Apri</a>
+          <button type="button" class="remove-btn" (click)="remove(game)">Rimuovi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

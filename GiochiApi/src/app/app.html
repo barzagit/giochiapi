@@ -1,0 +1,13 @@
+<router-outlet></router-outlet><!-- Overlay when panel is open -->
+<div class="panel-overlay" *ngIf="(panelOpen$ | async)" (click)="closeFavoritesPanel()"></div>
+
+<!-- Right-side sliding panel -->
+<aside class="favorites-panel" [class.open]="(panelOpen$ | async)" role="dialog" aria-label="Preferiti">
+	<div class="panel-header">
+		<h3>I tuoi preferiti</h3>
+		<button class="close-btn" (click)="closeFavoritesPanel()" aria-label="Chiudi">✕</button>
+	</div>
+	<div class="panel-content">
+		<app-favorites></app-favorites>
+	</div>
+</aside>

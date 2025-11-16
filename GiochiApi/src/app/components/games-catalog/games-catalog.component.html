@@ -1,0 +1,62 @@
+<div class="catalog-container">
+  <div class="header">
+    <h1>Catalogo Giochi</h1>
+    
+    <div class="toolbar-container">
+      <div class="toolbar">
+        <button type="button" class="filter-btn" [class.active]="selectedPlatform === 'all'" (click)="setPlatform('all')" aria-pressed="{{selectedPlatform === 'all'}}">Tutti i giochi</button>
+        <button type="button" class="filter-btn" [class.active]="selectedPlatform === 'pc'" (click)="setPlatform('pc')" aria-pressed="{{selectedPlatform === 'pc'}}">Giochi PC</button>
+        <button type="button" class="filter-btn" [class.active]="selectedPlatform === 'browser'" (click)="setPlatform('browser')" aria-pressed="{{selectedPlatform === 'browser'}}">Giochi Browser</button>
+      </div>
+
+      <button type="button" class="open-favs-inline" (click)="panelService.toggle()" aria-label="Apri preferiti">Preferiti</button>
+    </div>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="onSearch()"
+        placeholder="Cerca un gioco per nome..."
+        class="search-input"
+      />
+    </div>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    Caricamento giochi...
+  </div>
+
+  <div *ngIf="!loading && filteredGames.length === 0 && !error" class="no-results">
+    Nessun gioco trovato per la ricerca "{{ searchQuery }}"
+  </div>
+
+  <div class="games-grid" *ngIf="!loading && filteredGames.length > 0">
+    <div class="game-card" *ngFor="let game of filteredGames">
+      <div class="game-image-container">
+        <img [src]="game.thumbnail" [alt]="game.title" class="game-image" />
+      </div>
+      <div class="game-info">
+        <div class="card-actions">
+          <button type="button" class="fav-btn" (click)="toggleFavorite(game)" [attr.aria-pressed]="isFavorite(game)">
+            <span *ngIf="!isFavorite(game)">♡ Aggiungi ai preferiti</span>
+            <span *ngIf="isFavorite(game)">♥ Nei preferiti</span>
+          </button>
+        </div>
+        <h3 class="game-title">{{ game.title }}</h3>
+        <p class="game-genre">{{ game.genre }}</p>
+        <p class="game-platform">{{ game.platform }}</p>
+        <p class="game-description">{{ game.short_description }}</p>
+        <a [href]="game.game_url" target="_blank" class="game-link">Scopri di più</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && filteredGames.length > 0" class="results-info">
+    Visualizzati {{ filteredGames.length }} su {{ allGames.length }} giochi
+  </div>
+</div>
